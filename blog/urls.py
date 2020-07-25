@@ -18,10 +18,13 @@ from django.urls import path, re_path, include
 from django.conf import settings
 from django.views.static import serve
 
+"""Incluidos en el Curso de CodigoFcilito"""
+from django.config.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('aplicaciones.base.urls', 'base'))),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns +=[
